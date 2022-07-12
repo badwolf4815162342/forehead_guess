@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:forehead_guess/design/fg_design.dart';
 import 'package:flutter/services.dart';
+import 'package:forehead_guess/ui/widgets/accelerometer_recogniser.dart';
 import 'package:forehead_guess/ui/widgets/button_bar.dart';
 import 'package:forehead_guess/ui/widgets/card.dart';
 import 'package:forehead_guess/ui/widgets/close_button.dart';
@@ -66,7 +67,7 @@ class _GamePageState extends State<GamePage> {
         );
       });
     }
-    Timer(Duration(seconds: sharedPrefs.timerDurationInSeconds),
+    Timer(Duration(seconds: sharedPrefs.resultWaitSeconds),
         () => {_flipNewCard()});
   }
 
@@ -145,7 +146,9 @@ class _GamePageState extends State<GamePage> {
             Positioned(
               top: 5.0,
               right: 5.0,
-              child: FGGyroscopeRecogniser(onGuess: _displayResult),
+              child: sharedPrefs.accel
+                  ? FGAccelerometerRecogniser(onGuess: _displayResult)
+                  : FGGyroscopeRecogniser(onGuess: _displayResult),
             ),
             const Positioned(
               top: 0.0,

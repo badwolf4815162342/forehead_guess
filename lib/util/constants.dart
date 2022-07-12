@@ -13,10 +13,14 @@ class Constant {
   static const correctAudioPath = "sound_correct.mp3";
   static const timeUpAudioPath = "sound_time_up.mp3";
 
+  static const accelSensitivityString = "accelerometerSensitivity";
+  static const int accelSensitivityInitialValue = 8;
   static const gyroscopeSensitivityString = "gyroscopeSensitivity";
   static const int gyroscopeSensitivityInitialValue = 3;
   static const debugString = "debug";
   static const debugInitialValue = false;
+  static const accelString = "debug";
+  static const accelInitialValue = true;
   static const timerDurationInSecondsString = 'timerDurationInSeconds';
   static const int timerDurationInSecondsInitialValue = 90;
   static const resultWaitSecondsString = 'resultWaitSeconds';

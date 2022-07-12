@@ -56,8 +56,22 @@ class _GameSettingsPageState extends State<GameSettingsPage> {
                       );
                     }).toList(),
                   ),
+                  FGText.body('Accelerometer or Gyroscope'),
+                  SettingsTile.switchTile(
+                    activeSwitchColor: fgWarningColor,
+                    onToggle: (value) {
+                      SharedPrefs().accel = value;
+                      setState(() {});
+                    },
+                    initialValue: SharedPrefs().accel,
+                    leading: const Icon(Icons.directions),
+                    title: FGText.body(
+                      'Use Accelerometer if on (else Gyroscope)',
+                      maxLines: 2,
+                    ),
+                  ),
                   FGText.body(
-                      'Gyroscope Sensitivity (higher is less sensitive)'),
+                      'Accelerometer Sensitivity (higher is less sensitive)'),
                   CustomSettingsTile(
                       child: Slider(
                     activeColor: fgWarningColor,
@@ -68,6 +82,21 @@ class _GameSettingsPageState extends State<GameSettingsPage> {
                     label: SharedPrefs().gyroscopeSensitivity.toString(),
                     onChanged: (double value) {
                       SharedPrefs().gyroscopeSensitivity = (value.toInt());
+                      setState(() {});
+                    },
+                  )),
+                  FGText.body(
+                      'Gyroscope Sensitivity (higher is less sensitive)'),
+                  CustomSettingsTile(
+                      child: Slider(
+                    activeColor: fgWarningColor,
+                    inactiveColor: fgWarningColorLight,
+                    value: SharedPrefs().accelSensitivity.toDouble(),
+                    max: 9,
+                    min: 6,
+                    label: SharedPrefs().accelSensitivity.toString(),
+                    onChanged: (double value) {
+                      SharedPrefs().accelSensitivity = (value.toInt());
                       setState(() {});
                     },
                   )),

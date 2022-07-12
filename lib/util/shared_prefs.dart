@@ -14,6 +14,8 @@ class SharedPrefs {
 
   bool get debug =>
       _sharedPrefs?.getBool(Constant.debugString) ?? Constant.debugInitialValue;
+  bool get accel =>
+      _sharedPrefs?.getBool(Constant.accelString) ?? Constant.accelInitialValue;
   int get resultWaitSeconds =>
       _sharedPrefs?.getInt(Constant.resultWaitSecondsString) ??
       Constant.resultWaitSecondsInitialValue;
@@ -26,9 +28,16 @@ class SharedPrefs {
   int get gyroscopeSensitivity =>
       _sharedPrefs?.getInt(Constant.gyroscopeSensitivityString) ??
       Constant.gyroscopeSensitivityInitialValue;
+  int get accelSensitivity =>
+      _sharedPrefs?.getInt(Constant.accelSensitivityString) ??
+      Constant.accelSensitivityInitialValue;
 
   set debug(bool value) {
     _sharedPrefs?.setBool(Constant.debugString, value);
+  }
+
+  set accel(bool value) {
+    _sharedPrefs?.setBool(Constant.accelString, value);
   }
 
   set resultWaitSeconds(int value) {
@@ -45,6 +54,10 @@ class SharedPrefs {
 
   set gyroscopeSensitivity(int value) {
     _sharedPrefs?.setInt(Constant.gyroscopeSensitivityString, value);
+  }
+
+  set accelSensitivity(int value) {
+    _sharedPrefs?.setInt(Constant.accelSensitivityString, value);
   }
 }
 
